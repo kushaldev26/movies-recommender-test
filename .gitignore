@@ -1,0 +1,25 @@
+# Virtual Environment
+myenv/
+venv/
+.venv/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large files (>100MB) - GitHub will reject these
+similarity.pkl
+
+# Secrets / Configuration
+.env
+.env.local
+
+# IDEs and Editors
+.vscode/
+.idea/
+.DS_Store
+myenv/
+similarity.pkl
+.env
