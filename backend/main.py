@@ -48,8 +48,43 @@ def find_file(filename):
         return filename
     return None
 
+def download_from_google_drive(file_id, dest_path):
+    print(f"Downloading similarity.pkl from Google Drive (ID: {file_id}) to {dest_path}...")
+    import requests
+    url = "https://docs.google.com/uc?export=download"
+    session = requests.Session()
+    response = session.get(url, params={'id': file_id}, stream=True)
+    
+    # Get confirm token for large files
+    token = None
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            token = value
+            break
+            
+    if token:
+        response = session.get(url, params={'id': file_id, 'confirm': token}, stream=True)
+        
+    # Write to file
+    with open(dest_path, 'wb') as f:
+        for chunk in response.iter_content(32768):
+            if chunk:
+                f.write(chunk)
+    print("Download complete!")
+
 movies_path = find_file('movies.pkl')
 similarity_path = find_file('similarity.pkl')
+
+if not similarity_path:
+    # Try downloading if environment variable is set
+    drive_id = os.getenv("SIMILARITY_DRIVE_ID")
+    if drive_id:
+        target_path = os.path.join(parent_dir, 'similarity.pkl')
+        try:
+            download_from_google_drive(drive_id, target_path)
+            similarity_path = target_path
+        except Exception as e:
+            print(f"Error downloading similarity.pkl: {str(e)}")
 
 if not movies_path or not similarity_path:
     raise FileNotFoundError(
