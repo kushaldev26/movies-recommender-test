@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineMatch — Discover Movies You'll Love</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +21,14 @@
             --text-primary: #ffffff;
             --text-muted: #8b8b9a;
             --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            
+
             /* Similarity match badges */
-            --match-high: linear-gradient(135deg, #10b981 0%, #059669 100%);  /* Green */
-            --match-mid: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);   /* Amber */
-            --match-low: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);   /* Gray */
+            --match-high: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            /* Green */
+            --match-mid: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            /* Amber */
+            --match-low: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            /* Gray */
         }
 
         * {
@@ -48,13 +52,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-color);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--border-color);
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #2e2e42;
         }
@@ -202,8 +209,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* 3. Results Section */
@@ -212,7 +224,8 @@
             width: 100%;
             margin: 0 auto;
             padding: 0 1.5rem 5rem 1.5rem;
-            display: none; /* Shown dynamically */
+            display: none;
+            /* Shown dynamically */
         }
 
         .results-header {
@@ -239,25 +252,29 @@
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 cols for wide screens */
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 cols for wide screens */
             gap: 2rem;
         }
 
         @media (max-width: 1024px) {
             .results-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 cols desktop/tablet large */
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 cols desktop/tablet large */
             }
         }
 
         @media (max-width: 768px) {
             .results-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 cols tablet */
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 cols tablet */
             }
         }
 
         @media (max-width: 480px) {
             .results-grid {
-                grid-template-columns: 1fr; /* 1 col mobile */
+                grid-template-columns: 1fr;
+                /* 1 col mobile */
             }
         }
 
@@ -289,7 +306,8 @@
 
         .poster-container {
             width: 100%;
-            padding-top: 150%; /* 2:3 standard poster aspect ratio */
+            padding-top: 150%;
+            /* 2:3 standard poster aspect ratio */
             position: relative;
             background-color: #0c0c12;
             overflow: hidden;
@@ -330,7 +348,7 @@
         .fallback-icon {
             font-size: 2.5rem;
             margin-bottom: 0.75rem;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
         .fallback-title {
@@ -440,8 +458,94 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* 5. About Section */
+        .about-section {
+            max-width: 800px;
+            width: 100%;
+            margin: 4rem auto 6rem auto;
+            padding: 2.5rem;
+            background: rgba(18, 18, 26, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .about-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .developer-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .developer-avatar {
+            font-size: 3rem;
+            background: rgba(245, 197, 24, 0.08);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--accent-glow);
+        }
+
+        .developer-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .developer-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .developer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .developer-links a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- 1. Hero Section -->
@@ -455,14 +559,8 @@
     <!-- 2. Search Section -->
     <div class="search-section">
         <form id="search-form" class="search-form" autocomplete="off">
-            <input 
-                type="text" 
-                id="search-input" 
-                class="search-input" 
-                placeholder="Enter a movie you like..." 
-                list="movie-list" 
-                required
-            >
+            <input type="text" id="search-input" class="search-input" placeholder="Enter a movie you like..."
+                list="movie-list" required>
             <datalist id="movie-list">
                 <!-- Populated dynamically -->
             </datalist>
@@ -487,6 +585,29 @@
             <!-- Movie cards injected here -->
         </div>
     </main>
+
+    <!-- 5. About Section -->
+    <section class="about-section">
+        <h2 class="about-title">About CineMatch</h2>
+        <p class="about-desc">
+            CineMatch is a content-based movie recommendation system that analyzes movie descriptions, genres, and
+            metadata to find connections between your favorite films. By utilizing Natural Language Processing (TF-IDF
+            vectorization) and Cosine Similarity, the backend calculates distance metrics to deliver personalized
+            recommendations.
+        </p>
+        <div class="developer-card">
+            <div class="developer-avatar">💻</div>
+            <div class="developer-info">
+                <h3>Ghost</h3>
+                <p>Lead Developer & AI Engineer</p>
+                <div class="developer-links">
+                    <a href="https://github.com/kushaldev26" target="_blank">
+                        <span>🐙</span> GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -553,37 +674,37 @@
                         n: 8
                     })
                 })
-                .then(async response => {
-                    spinner.style.display = 'none';
-                    if (!response.ok) {
-                        const errorData = await response.json().catch(() => ({}));
-                        throw new Error(errorData.detail || 'Movie not found. Try another title.');
-                    }
-                    return response.json();
-                })
-                .then(recommendations => {
-                    if (!recommendations || recommendations.length === 0) {
-                        showToast('No recommendations found for this movie.');
-                        return;
-                    }
+                    .then(async response => {
+                        spinner.style.display = 'none';
+                        if (!response.ok) {
+                            const errorData = await response.json().catch(() => ({}));
+                            throw new Error(errorData.detail || 'Movie not found. Try another title.');
+                        }
+                        return response.json();
+                    })
+                    .then(recommendations => {
+                        if (!recommendations || recommendations.length === 0) {
+                            showToast('No recommendations found for this movie.');
+                            return;
+                        }
 
-                    // Render recommendations
-                    resultsSection.style.display = 'block';
-                    
-                    recommendations.forEach((movie, index) => {
-                        const card = createMovieCard(movie);
-                        resultsGrid.appendChild(card);
+                        // Render recommendations
+                        resultsSection.style.display = 'block';
 
-                        // Staggered fade-in animation (80ms interval)
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 80);
+                        recommendations.forEach((movie, index) => {
+                            const card = createMovieCard(movie);
+                            resultsGrid.appendChild(card);
+
+                            // Staggered fade-in animation (80ms interval)
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 80);
+                        });
+                    })
+                    .catch(err => {
+                        spinner.style.display = 'none';
+                        showToast(err.message || 'Movie not found. Try another title.');
                     });
-                })
-                .catch(err => {
-                    spinner.style.display = 'none';
-                    showToast(err.message || 'Movie not found. Try another title.');
-                });
             });
 
             // Helper to generate a movie card element
@@ -634,9 +755,9 @@
                 const toast = document.getElementById('toast');
                 const toastMessage = toast.querySelector('.toast-message');
                 toastMessage.textContent = message;
-                
+
                 toast.classList.add('show');
-                
+
                 // Auto dismiss after 3 seconds
                 setTimeout(() => {
                     toast.classList.remove('show');
@@ -656,4 +777,5 @@
         });
     </script>
 </body>
+
 </html>

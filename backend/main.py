@@ -50,26 +50,9 @@ def find_file(filename):
 
 def download_from_google_drive(file_id, dest_path):
     print(f"Downloading similarity.pkl from Google Drive (ID: {file_id}) to {dest_path}...")
-    import requests
-    url = "https://docs.google.com/uc?export=download"
-    session = requests.Session()
-    response = session.get(url, params={'id': file_id}, stream=True)
-    
-    # Get confirm token for large files
-    token = None
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            token = value
-            break
-            
-    if token:
-        response = session.get(url, params={'id': file_id, 'confirm': token}, stream=True)
-        
-    # Write to file
-    with open(dest_path, 'wb') as f:
-        for chunk in response.iter_content(32768):
-            if chunk:
-                f.write(chunk)
+    import gdown
+    # gdown automatically handles virus warnings and large file downloads from Google Drive
+    gdown.download(id=file_id, output=dest_path, quiet=False)
     print("Download complete!")
 
 movies_path = find_file('movies.pkl')
